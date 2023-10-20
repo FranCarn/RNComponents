@@ -13,6 +13,16 @@ const menuItems: MenuItem[] = [
     icon: 'cube-outline',
     components: 'Animation101Screen',
   },
+  {
+    name: 'Animation 102',
+    icon: 'star-outline',
+    components: 'Animation101Screen',
+  },
+  {
+    name: 'Animation 103',
+    icon: 'return-up-back-outline',
+    components: 'Animation101Screen',
+  },
 ];
 
 export const HomeScreen = () => {
