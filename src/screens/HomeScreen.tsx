@@ -9,17 +9,12 @@ const menuItems: MenuItem[] = [
   {
     name: 'Animation 101',
     icon: 'cube-outline',
-    components: 'Animation101Screen',
+    component: 'Animation101',
   },
   {
     name: 'Animation 102',
     icon: 'star-outline',
-    components: 'Animation102Screen',
-  },
-  {
-    name: 'Animation 103',
-    icon: 'return-up-back-outline',
-    components: 'Animation103Screen',
+    component: 'Animation102',
   },
 ];
 
