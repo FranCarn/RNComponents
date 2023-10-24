@@ -3,7 +3,7 @@ import {Animated, Button, StyleSheet, View} from 'react-native';
 import {useAnimation} from '../hooks/useAnimation';
 
 export const Animation101 = () => {
-  const {opacity, top, fadeIn, fadeOut} = useAnimation();
+  const {opacity, position, startMoving, fadeIn, fadeOut} = useAnimation();
 
   return (
     <View style={styles.container}>
@@ -11,11 +11,17 @@ export const Animation101 = () => {
         style={{
           ...styles.purpleBox,
           opacity,
-          transform: [{translateY: top}],
+          transform: [{translateY: position}],
           marginBottom: 20,
         }}
       />
-      <Button title="Fade in" onPress={fadeIn} />
+      <Button
+        title="Fade in"
+        onPress={() => {
+          fadeIn();
+          startMoving(-100);
+        }}
+      />
       <Button title="Fade out" onPress={fadeOut} />
     </View>
   );
