@@ -19,10 +19,16 @@ export const AlertScreen = () => {
       {cancelable: true, onDismiss: () => console.log('dismissed')},
     );
   };
+  const showPrompt = () => {
+    Alert.prompt('You sure?', 'This action cant revert', (value: string) =>
+      console.log('info: ', value),
+    );
+  };
   return (
     <View style={styles.globalMargin}>
       <HeaderTitle title="Alerts" />
       <Button title="Show Alert" onPress={showAlert} />
+      <Button title="Show Prompt" onPress={showPrompt} />
     </View>
   );
 };
