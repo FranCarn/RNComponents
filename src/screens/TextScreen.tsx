@@ -11,19 +11,15 @@ import {
 import {HeaderTitle} from '../components/HeaderTitle';
 import {styles as globalStyles} from '../theme/appTheme';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
+import {useForm} from '../hooks/useForm';
 
 export const TextScreen = () => {
-  const [form, setForm] = useState({
-    name: '',
+  const {email, name, phone, handleChange, form} = useForm({
     email: '',
+    name: '',
     phone: '',
   });
-  const handleChange = (value: string, field: string) => {
-    setForm(prev => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
