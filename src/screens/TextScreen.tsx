@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
   StyleSheet,
+  Text,
   TextInput,
   View,
 } from 'react-native';
@@ -12,12 +13,14 @@ import {HeaderTitle} from '../components/HeaderTitle';
 import {styles as globalStyles} from '../theme/appTheme';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {useForm} from '../hooks/useForm';
+import {CustomSwitch} from '../components/CustomSwitch';
 
 export const TextScreen = () => {
-  const {email, name, phone, handleChange, form} = useForm({
+  const {handleChange, form} = useForm({
     email: '',
     name: '',
     phone: '',
+    isSubscribed: false,
   });
 
   return (
@@ -35,8 +38,7 @@ export const TextScreen = () => {
               autoCapitalize="words"
               onChangeText={value => handleChange(value, 'name')}
             />
-            <HeaderTitle title={JSON.stringify(form, null, 3)} />
-            <HeaderTitle title={JSON.stringify(form, null, 3)} />
+
             <TextInput
               style={styles.inputStyle}
               placeholder="Your email"
@@ -55,7 +57,16 @@ export const TextScreen = () => {
               keyboardType="phone-pad"
               onChangeText={value => handleChange(value, 'phone')}
             />
+            <View style={styles.switchRow}>
+              <Text style={styles.switchText}>Subscribe</Text>
+              <CustomSwitch
+                isOn={form.isSubscribed}
+                onChange={value => handleChange(value, 'isSubscribed')}
+              />
+            </View>
+
             <View style={{height: 100}} />
+            <HeaderTitle title={JSON.stringify(form, null, 3)} />
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>
@@ -70,6 +81,16 @@ const styles = StyleSheet.create({
     height: 50,
     paddingHorizontal: 10,
     borderRadius: 10,
+    marginVertical: 10,
+  },
+  switchText: {
+    marginTop: 10,
+    fontSize: 25,
+  },
+  switchRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginVertical: 10,
   },
 });
