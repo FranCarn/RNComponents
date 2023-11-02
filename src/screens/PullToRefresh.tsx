@@ -16,7 +16,17 @@ export const PullToRefresh = () => {
   return (
     <ScrollView
       refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={handleRefresh}
+          progressViewOffset={10}
+          progressBackgroundColor="#5856d6"
+          style={{backgroundColor: '#5856d6'}}
+          colors={['white', 'red']}
+          tintColor="white"
+          title="Loading..."
+          titleColor="white"
+        />
       }>
       <View style={styles.globalMargin}>
         <HeaderTitle title="Pull to refresh" />
