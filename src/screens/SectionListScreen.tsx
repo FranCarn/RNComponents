@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, SectionList} from 'react-native';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {styles as globalStyles} from '../theme/appTheme';
+import {ItemSeparator} from '../components/ItemSeparator';
 
 interface Houses {
   house: string;
@@ -27,8 +28,14 @@ export const SectionListScreen = () => {
   return (
     <View style={{...globalStyles.globalMargin, flex: 1}}>
       <SectionList
+        stickySectionHeadersEnabled
         sections={houses}
         keyExtractor={(item, index) => item + index}
+        ListHeaderComponent={<HeaderTitle title="Section List" />}
+        ListFooterComponent={
+          <HeaderTitle title={`Total of Houses: ${houses.length}`} />
+        }
+        ListFooterComponentStyle={{marginBottom: 70}}
         renderItem={({item}) => (
           <View style={styles.item}>
             <Text style={styles.title}>{item}</Text>
@@ -39,6 +46,11 @@ export const SectionListScreen = () => {
             <HeaderTitle title={house} />
           </View>
         )}
+        renderSectionFooter={({section}) => (
+          <Text>{'Total: ' + section.data.length}</Text>
+        )}
+        ItemSeparatorComponent={() => <ItemSeparator />}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
@@ -50,9 +62,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    padding: 10,
+    marginVertical: 5,
   },
   header: {
     fontSize: 32,
