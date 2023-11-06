@@ -18,9 +18,27 @@ export const ModalScreen = () => {
       <HeaderTitle title="Modals" />
       <Modal animationType="fade" transparent={true} visible={modalVisible}>
         <View style={styles.modalView}>
-          <View style={{backgroundColor: '#FFF'}}>
-            <HeaderTitle title="Modal Title" />
-            <Text>Modal body</Text>
+          <View
+            style={{
+              backgroundColor: '#FFF',
+              width: 200,
+              height: 200,
+              justifyContent: 'center',
+              alignItems: 'center',
+              shadowOffset: {
+                width: 0,
+                height: 10,
+              },
+              shadowOpacity: 0.25,
+              elevation: 10,
+              borderRadius: 5,
+            }}>
+            <Text style={{fontSize: 20, fontWeight: 'bold'}}>Modal Header</Text>
+
+            <Text style={{fontSize: 16, fontWeight: '300', marginBottom: 20}}>
+              Modal body
+            </Text>
+
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>
@@ -41,6 +59,8 @@ const styles = StyleSheet.create({
   modalView: {
     backgroundColor: 'rgba(0,0,0,0.8)',
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   button: {
     borderRadius: 20,
