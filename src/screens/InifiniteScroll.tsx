@@ -20,7 +20,12 @@ export const InifiniteScroll = () => {
     setNumbers(prev => [...prev, ...newArray]);
   };
   const renderItem = (item: number) => {
-    return <FadeInImage uri={`https://picsum.photos/id/${item}/500/400`} />;
+    return (
+      <FadeInImage
+        uri={`https://picsum.photos/id/${item}/500/400`}
+        style={{width: '100%', height: 400}}
+      />
+    );
   };
   return (
     <View style={{flex: 1}}>
@@ -28,7 +33,11 @@ export const InifiniteScroll = () => {
         data={numbers}
         keyExtractor={item => item.toString()}
         renderItem={({item}) => renderItem(item)}
-        ListHeaderComponent={<HeaderTitle title="Infinite Scroll" />}
+        ListHeaderComponent={() => (
+          <View style={{marginHorizontal: 20}}>
+            <HeaderTitle title="Infinite Scroll" />
+          </View>
+        )}
         onEndReachedThreshold={0.5}
         onEndReached={loadMore}
         ListFooterComponent={() => (
