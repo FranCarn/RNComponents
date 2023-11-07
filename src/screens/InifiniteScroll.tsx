@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, FlatList, Text, StyleSheet} from 'react-native';
+import {View, FlatList, StyleSheet, Image} from 'react-native';
 import {HeaderTitle} from '../components/HeaderTitle';
 
 export const InifiniteScroll = () => {
@@ -13,7 +13,12 @@ export const InifiniteScroll = () => {
     setNumbers(prev => [...prev, ...newArray]);
   };
   const renderItem = (item: number) => {
-    return <Text style={styles.textItem}>{item}</Text>;
+    return (
+      <Image
+        style={{width: '100%', height: 400}}
+        source={{uri: `https://picsum.photos/id/${item}/500/400`}}
+      />
+    );
   };
   return (
     <View style={{flex: 1}}>
