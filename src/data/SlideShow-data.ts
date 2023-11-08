@@ -1,12 +1,12 @@
 import {ImageSourcePropType} from 'react-native';
 
-interface Slide {
+export interface Slide {
   title: string;
   desc: string;
   img: ImageSourcePropType;
 }
 
-const items: Slide[] = [
+export const slideItems: Slide[] = [
   {
     title: 'Titulo 1',
     desc: 'Ea et eu enim fugiat sunt reprehenderit sunt aute quis tempor ipsum cupidatat et.',
