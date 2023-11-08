@@ -1,15 +1,18 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {HomeScreen} from '../screens/HomeScreen';
-import {Animation101} from '../screens/Animation101';
-import {Animation102} from '../screens/Animation102';
-import SwitchScreen from '../screens/SwitchScreen';
-import {AlertScreen} from '../screens/AlertScreen';
-import {TextScreen} from '../screens/TextScreen';
-import {PullToRefresh} from '../screens/PullToRefresh';
-import {SectionListScreen} from '../screens/SectionListScreen';
-import {ModalScreen} from '../screens/ModalScreen';
-import {InifiniteScroll} from '../screens/InifiniteScroll';
+import {
+  AlertScreen,
+  Animation101,
+  Animation102,
+  HomeScreen,
+  InifiniteScroll,
+  ModalScreen,
+  PullToRefresh,
+  SectionListScreen,
+  SlideScreen,
+  SwitchScreen,
+  TextScreen,
+} from '../screens';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +33,7 @@ export const Navigator = () => {
       <Stack.Screen name="SectionListScreen" component={SectionListScreen} />
       <Stack.Screen name="ModalScreen" component={ModalScreen} />
       <Stack.Screen name="InfiniteScroll" component={InifiniteScroll} />
+      <Stack.Screen name="SlideScreen" component={SlideScreen} />
     </Stack.Navigator>
   );
 };
