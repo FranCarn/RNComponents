@@ -60,17 +60,9 @@ export const SlideScreen = () => {
         />
         {slideItems.length - 1 === activeIndex && (
           <TouchableOpacity
-            style={{
-              alignItems: 'center',
-              backgroundColor: '#5856d6',
-              borderRadius: 10,
-              flexDirection: 'row',
-              height: 50,
-              justifyContent: 'center',
-              width: 130,
-            }}
+            style={styles.startButton}
             activeOpacity={0.8}
-            onPress={() => navigate('Home')}>
+            onPress={() => navigate('Home' as never)}>
             <Text style={{fontSize: 20, color: '#fff'}}>Start!</Text>
             <Icon name="chevron-forward-outline" color="#fff" size={35} />
           </TouchableOpacity>
@@ -96,5 +88,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 40,
     justifyContent: 'center',
+  },
+  startButton: {
+    alignItems: 'center',
+    backgroundColor: '#5856d6',
+    borderRadius: 10,
+    flexDirection: 'row',
+    height: 50,
+    justifyContent: 'center',
+    width: 130,
   },
 });
