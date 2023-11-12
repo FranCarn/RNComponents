@@ -12,6 +12,7 @@ import {
   SlideScreen,
   SwitchScreen,
   TextScreen,
+  ThemeScreen,
 } from '../screens';
 
 const Stack = createStackNavigator();
@@ -34,6 +35,7 @@ export const Navigator = () => {
       <Stack.Screen name="ModalScreen" component={ModalScreen} />
       <Stack.Screen name="InfiniteScroll" component={InifiniteScroll} />
       <Stack.Screen name="SlideScreen" component={SlideScreen} />
+      <Stack.Screen name="ThemeScreen" component={ThemeScreen} />
     </Stack.Navigator>
   );
 };

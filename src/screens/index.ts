@@ -9,3 +9,4 @@ export * from './SectionListScreen';
 export * from './SlideScreen';
 export {default as SwitchScreen} from './SwitchScreen';
 export * from './TextScreen';
+export * from './ThemeScreen';

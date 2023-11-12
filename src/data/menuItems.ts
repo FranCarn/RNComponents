@@ -51,4 +51,9 @@ export const menuItems: MenuItem[] = [
     icon: 'swap-horizontal-outline',
     component: 'SlideScreen',
   },
+  {
+    name: 'Themes',
+    icon: 'flask-outline',
+    component: 'ThemeScreen',
+  },
 ];
