@@ -17,8 +17,8 @@ export const FlatListMenuItem = ({item}: Props) => {
       activeOpacity={0.8}
       onPress={() => navigate(item.component as never)}>
       <View style={styles.container}>
-        <Icon name={item.icon} color="#5857d6" size={23} />
-        <Text style={{...styles.itemText, color: colors.text }}>
+        <Icon name={item.icon} color="#5857d6" size={22} />
+        <Text style={{...styles.itemText, color: colors.text}}>
           {item.name}
         </Text>
         <View style={{flex: 1}} />
