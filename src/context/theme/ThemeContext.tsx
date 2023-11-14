@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useReducer} from 'react';
 import {createContext} from 'react';
+import {ThemeState, lightTheme, themeReducer} from './themeReducer';
 interface Props {
   children: JSX.Element;
 }
 
 interface ThemeContextProps {
-  theme: any;
+  theme: ThemeState;
   setDarkTheme: () => void;
   setLigthTheme: () => void;
 }
@@ -13,11 +14,15 @@ interface ThemeContextProps {
 export const ThemeContext = createContext({} as ThemeContextProps);
 
 export const ThemeProvider = ({children}: Props) => {
-  const theme = {};
+  const [theme, dispatch] = useReducer(themeReducer, lightTheme); // Todo: get global theme
 
-  const setDarkTheme = () => {};
+  const setDarkTheme = () => {
+    dispatch({type: 'dark_theme'});
+  };
 
-  const setLigthTheme = () => {};
+  const setLigthTheme = () => {
+    dispatch({type: 'light_theme'});
+  };
 
   return (
     <ThemeContext.Provider value={{setLigthTheme, setDarkTheme, theme}}>

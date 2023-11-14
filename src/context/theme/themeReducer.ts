@@ -7,7 +7,7 @@ export interface ThemeState extends Theme {
   dividerColor: string;
 }
 
-const lightTheme: ThemeState = {
+export const lightTheme: ThemeState = {
   currentTheme: 'light',
   dark: false,
   colors: {
