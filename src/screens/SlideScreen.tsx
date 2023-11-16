@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   Dimensions,
   Image,
@@ -13,16 +13,22 @@ import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {Slide, slideItems} from '../data/SlideShow-data';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import {ThemeContext} from '../context';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
 export const SlideScreen = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
   const renderItem = (item: Slide) => {
     return (
-      <View style={styles.itemContainer}>
+      <View style={{...styles.itemContainer, backgroundColor: colors.text}}>
         <Image source={item.img} style={styles.itemImage} />
-        <Text style={styles.itemTitle}>{item.title}</Text>
+        <Text style={{...styles.itemTitle, color: colors.primary}}>
+          {item.title}
+        </Text>
         <Text style={styles.itemSubTitle}>{item.desc}</Text>
       </View>
     );
@@ -55,12 +61,12 @@ export const SlideScreen = () => {
             width: 10,
             height: 10,
             borderRadius: 10,
-            backgroundColor: '#5856d6',
+            backgroundColor: colors.primary,
           }}
         />
         {slideItems.length - 1 === activeIndex && (
           <TouchableOpacity
-            style={styles.startButton}
+            style={{...styles.startButton, backgroundColor: colors.primary}}
             activeOpacity={0.8}
             onPress={() => navigate('Home' as never)}>
             <Text style={{fontSize: 20, color: '#fff'}}>Start!</Text>
@@ -76,7 +82,6 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#5856d6',
   },
   itemSubTitle: {
     fontSize: 16,
@@ -85,13 +90,11 @@ const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
     borderRadius: 5,
-    backgroundColor: '#fff',
     padding: 40,
     justifyContent: 'center',
   },
   startButton: {
     alignItems: 'center',
-    backgroundColor: '#5856d6',
     borderRadius: 10,
     flexDirection: 'row',
     height: 50,
