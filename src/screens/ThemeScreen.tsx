@@ -6,15 +6,22 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {ThemeContext} from '../context';
 
 export const ThemeScreen = () => {
-  const {setDarkTheme} = useContext(ThemeContext);
+  const {
+    setDarkTheme,
+    setLigthTheme,
+    theme: {dark, colors},
+  } = useContext(ThemeContext);
+
   return (
     <View style={globalStyles.globalMargin}>
       <HeaderTitle title="Theme" />
       <TouchableOpacity
-        style={styles.toggleButton}
+        style={{...styles.toggleButton, backgroundColor: colors.primary}}
         activeOpacity={0.8}
-        onPress={setDarkTheme}>
-        <Text style={styles.buttonText}>Ligth / Dark</Text>
+        onPress={dark ? setLigthTheme : setDarkTheme}>
+        <Text style={styles.buttonText}>
+          {dark ? 'Ligth Theme' : 'Dark Theme'}
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -22,7 +29,6 @@ export const ThemeScreen = () => {
 
 const styles = StyleSheet.create({
   toggleButton: {
-    backgroundColor: '#5856d6',
     justifyContent: 'center',
     width: 150,
     height: 50,
