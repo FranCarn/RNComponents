@@ -1,6 +1,7 @@
-import React, {useReducer} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import {createContext} from 'react';
-import {ThemeState, lightTheme, themeReducer} from './themeReducer';
+import {ThemeState, darkTheme, lightTheme, themeReducer} from './themeReducer';
+import {useColorScheme} from 'react-native';
 interface Props {
   children: JSX.Element;
 }
@@ -14,7 +15,11 @@ interface ThemeContextProps {
 export const ThemeContext = createContext({} as ThemeContextProps);
 
 export const ThemeProvider = ({children}: Props) => {
-  const [theme, dispatch] = useReducer(themeReducer, lightTheme); // Todo: get global theme
+  const colorScheme = useColorScheme();
+  const [theme, dispatch] = useReducer(
+    themeReducer,
+    colorScheme === 'light' ? lightTheme : darkTheme,
+  );
 
   const setDarkTheme = () => {
     dispatch({type: 'dark_theme'});
@@ -23,6 +28,10 @@ export const ThemeProvider = ({children}: Props) => {
   const setLigthTheme = () => {
     dispatch({type: 'light_theme'});
   };
+
+  useEffect(() => {
+    colorScheme === 'light' ? setLigthTheme() : setDarkTheme();
+  }, [colorScheme]);
 
   return (
     <ThemeContext.Provider value={{setLigthTheme, setDarkTheme, theme}}>

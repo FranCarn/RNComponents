@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -14,6 +14,7 @@ import {styles as globalStyles} from '../theme/appTheme';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {useForm} from '../hooks/useForm';
 import {CustomSwitch} from '../components/CustomSwitch';
+import {ThemeContext} from '../context/theme/ThemeContext';
 
 export const TextScreen = () => {
   const {handleChange, form} = useForm({
@@ -22,7 +23,9 @@ export const TextScreen = () => {
     phone: '',
     isSubscribed: false,
   });
-
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -31,7 +34,7 @@ export const TextScreen = () => {
           <View style={globalStyles.globalMargin}>
             <HeaderTitle title="Text inputs" />
             <TextInput
-              style={styles.inputStyle}
+              style={{...styles.inputStyle, borderColor: colors.card}}
               value={form.name}
               placeholder="Your name"
               autoCorrect={false}
@@ -40,7 +43,7 @@ export const TextScreen = () => {
             />
 
             <TextInput
-              style={styles.inputStyle}
+              style={{...styles.inputStyle, borderColor: colors.card}}
               placeholder="Your email"
               value={form.email}
               keyboardType="email-address"
@@ -51,7 +54,7 @@ export const TextScreen = () => {
             />
 
             <TextInput
-              style={styles.inputStyle}
+              style={{...styles.inputStyle, borderColor: colors.card}}
               placeholder="Your phone"
               value={form.phone}
               keyboardType="phone-pad"
@@ -77,7 +80,6 @@ export const TextScreen = () => {
 const styles = StyleSheet.create({
   inputStyle: {
     borderWidth: 1,
-    borderColor: 'rgba(0,0,0,0.3)',
     height: 50,
     paddingHorizontal: 10,
     borderRadius: 10,

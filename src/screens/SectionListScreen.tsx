@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, StyleSheet, SectionList} from 'react-native';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {styles as globalStyles} from '../theme/appTheme';
 import {ItemSeparator} from '../components/ItemSeparator';
+import {ThemeContext} from '../context';
 
 interface Houses {
   house: string;
@@ -25,6 +26,9 @@ const houses: Houses[] = [
 ];
 
 export const SectionListScreen = () => {
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
   return (
     <View style={{...globalStyles.globalMargin, flex: 1}}>
       <SectionList
@@ -40,7 +44,7 @@ export const SectionListScreen = () => {
           </View>
         )}
         renderSectionHeader={({section: {house}}) => (
-          <View style={{backgroundColor: '#fff'}}>
+          <View style={{backgroundColor: colors.background}}>
             <HeaderTitle title={house} />
           </View>
         )}

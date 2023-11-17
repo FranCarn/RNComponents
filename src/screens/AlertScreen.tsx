@@ -3,8 +3,10 @@ import {Alert, Button, View} from 'react-native';
 import prompt from 'react-native-prompt-android';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {styles} from '../theme/appTheme';
+import {useNavigation} from '@react-navigation/native';
 
 export const AlertScreen = () => {
+  const {navigate} = useNavigation();
   const showAlert = () => {
     Alert.alert(
       'Alert Title',
@@ -57,6 +59,8 @@ export const AlertScreen = () => {
       <Button title="Show Alert" onPress={showAlert} />
       <View style={{height: 10}} />
       <Button title="Show Prompt" onPress={showPrompt} />
+      <View style={{height: 10}} />
+      <Button title="Go home" onPress={() => navigate('Home' as never)} />
     </View>
   );
 };

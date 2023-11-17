@@ -1,18 +1,21 @@
 import React, {useRef} from 'react';
-import {StyleSheet, View, Animated, PanResponder} from 'react-native';
+import {StyleSheet, View, Animated, PanResponder, Text} from 'react-native';
 
 export const Animation102 = () => {
   const pan = useRef(new Animated.ValueXY()).current;
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
-    onPanResponderMove: Animated.event([
-      null,
-      {
-        dx: pan.x,
-        dy: pan.y,
-      },
-    ]),
+    onPanResponderMove: Animated.event(
+      [
+        null,
+        {
+          dx: pan.x,
+          dy: pan.y,
+        },
+      ],
+      {useNativeDriver: true},
+    ),
     onPanResponderRelease: () => {
       Animated.spring(pan, {
         toValue: {x: 0, y: 0},
@@ -38,8 +41,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   skyBox: {
-    backgroundColor: '#75cedb',
-    width: 150,
-    heitgh: 150,
+    backgroundColor: '#75CEDB',
+    width: 200,
+    heitgh: 200,
   },
 });

@@ -28,10 +28,10 @@ export const Navigator = () => {
           headerShown: false,
           cardStyle: {backgroundColor: theme.colors.background},
         }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="AlertScreen" component={AlertScreen} />
         <Stack.Screen name="Animation101" component={Animation101} />
         <Stack.Screen name="Animation102" component={Animation102} />
-        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="InfiniteScroll" component={InifiniteScroll} />
         <Stack.Screen name="ModalScreen" component={ModalScreen} />
         <Stack.Screen name="PullToRefresh" component={PullToRefresh} />
