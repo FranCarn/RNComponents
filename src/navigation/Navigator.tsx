@@ -26,7 +26,7 @@ export const Navigator = () => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          cardStyle: {backgroundColor: '#fff'},
+          cardStyle: {backgroundColor: theme.colors.background},
         }}>
         <Stack.Screen name="AlertScreen" component={AlertScreen} />
         <Stack.Screen name="Animation101" component={Animation101} />

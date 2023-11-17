@@ -11,11 +11,11 @@ export const lightTheme: ThemeState = {
   currentTheme: 'light',
   dark: false,
   colors: {
-    primary: 'red',
-    background: 'blue',
+    primary: '#084F6A',
+    background: 'white',
     card: '#084f6a',
     text: '#000',
-    border: 'orange',
+    border: '#000',
     notification: 'teal',
   },
   dividerColor: 'rgba(0,0,0,0.7)',
@@ -26,7 +26,7 @@ export const darkTheme: ThemeState = {
   colors: {
     primary: '#75cedb',
     background: '#000',
-    card: 'green',
+    card: '#2a2a2a',
     text: '#fff',
     border: 'orange',
     notification: 'teal',
